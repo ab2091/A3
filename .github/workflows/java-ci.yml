@@ -6,7 +6,7 @@ on:
     branches: [ main, master ]
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
     - uses: actions/checkout@v3
     
@@ -23,8 +23,9 @@ jobs:
 
     - name: Compile Java Files
       run: |
-        javac -cp ".:junit-jupiter-api-5.8.1.jar:junit-jupiter-engine-5.8.1.jar" Assignment\ 2/src/LoginApp.java
-        javac -cp ".:junit-jupiter-api-5.8.1.jar:junit-jupiter-engine-5.8.1.jar" Assignment\ 2/src/LoginAppTest.java
+        javac -cp ".:junit-jupiter-api-5.8.1.jar:junit-jupiter-engine-5.8.1.jar" "Assignment 2/src/LoginApp.java"
+        javac -cp ".:junit-jupiter-api-5.8.1.jar:junit-jupiter-engine-5.8.1.jar" "Assignment 2/src/LoginAppTest.java"
     
     - name: Run Tests
-      run: java -jar junit-platform-console-1.8.1.jar --select-class LoginAppTest --cp "Assignment 2/src:junit-jupiter-api-5.8.1.jar:junit-jupiter-engine-5.8.1.jar"
+      run: |
+        java -cp "Assignment 2/src:junit-jupiter-api-5.8.1.jar:junit-jupiter-engine-5.8.1.jar" org.junit.platform.console.ConsoleLauncher --select-class LoginAppTest
