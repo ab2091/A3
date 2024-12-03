@@ -18,14 +18,14 @@ jobs:
     
     - name: Install JUnit
       run: |
-        wget https://repo1.maven.org/maven2/org/junit/jupiter/junit-jupiter-api/5.8.1/junit-jupiter-api-5.8.1.jar
-        wget https://repo1.maven.org/maven2/org/junit/jupiter/junit-jupiter-engine/5.8.1/junit-jupiter-engine-5.8.1.jar
+        Invoke-WebRequest -Uri https://repo1.maven.org/maven2/org/junit/jupiter/junit-jupiter-api/5.8.1/junit-jupiter-api-5.8.1.jar -OutFile junit-jupiter-api-5.8.1.jar
+        Invoke-WebRequest -Uri https://repo1.maven.org/maven2/org/junit/jupiter/junit-jupiter-engine/5.8.1/junit-jupiter-engine-5.8.1.jar -OutFile junit-jupiter-engine-5.8.1.jar
 
     - name: Compile Java Files
       run: |
-        javac -cp ".:junit-jupiter-api-5.8.1.jar:junit-jupiter-engine-5.8.1.jar" "Assignment 2/src/LoginApp.java"
-        javac -cp ".:junit-jupiter-api-5.8.1.jar:junit-jupiter-engine-5.8.1.jar" "Assignment 2/src/LoginAppTest.java"
+        javac -cp ".;junit-jupiter-api-5.8.1.jar;junit-jupiter-engine-5.8.1.jar" "Assignment 2/src/LoginApp.java"
+        javac -cp ".;junit-jupiter-api-5.8.1.jar;junit-jupiter-engine-5.8.1.jar" "Assignment 2/src/LoginAppTest.java"
     
     - name: Run Tests
       run: |
-        java -cp "Assignment 2/src:junit-jupiter-api-5.8.1.jar:junit-jupiter-engine-5.8.1.jar" org.junit.platform.console.ConsoleLauncher --select-class LoginAppTest
+        java -cp "Assignment 2/src;junit-jupiter-api-5.8.1.jar;junit-jupiter-engine-5.8.1.jar" org.junit.platform.console.ConsoleLauncher --select-class LoginAppTest
