@@ -16,10 +16,15 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
     
+    - name: Install JUnit
+      run: |
+        wget https://repo1.maven.org/maven2/org/junit/jupiter/junit-jupiter-api/5.8.1/junit-jupiter-api-5.8.1.jar
+        wget https://repo1.maven.org/maven2/org/junit/jupiter/junit-jupiter-engine/5.8.1/junit-jupiter-engine-5.8.1.jar
+
     - name: Compile Java Files
       run: |
-        javac Assignment\ 2/src/LoginApp.java
-        javac Assignment\ 2/src/LoginAppTest.java
+        javac -cp ".:junit-jupiter-api-5.8.1.jar:junit-jupiter-engine-5.8.1.jar" Assignment\ 2/src/LoginApp.java
+        javac -cp ".:junit-jupiter-api-5.8.1.jar:junit-jupiter-engine-5.8.1.jar" Assignment\ 2/src/LoginAppTest.java
     
     - name: Run Tests
-      run: java -cp "Assignment 2/src" LoginAppTest
+      run: java -jar junit-platform-console-1.8.1.jar --select-class LoginAppTest --cp "Assignment 2/src:junit-jupiter-api-5.8.1.jar:junit-jupiter-engine-5.8.1.jar"
