@@ -10,12 +10,8 @@ import java.sql.ResultSet;
 public class LoginApp extends JFrame {
     private JTextField emailField;
     private JPasswordField passwordField;
-    private static final String DB_URL = "mysql://avnadmin:AVNS_BOwgsttXw1DG074BVy8@mysql-1e7edf9b-lhr-b3a4.e.aivencloud.com:25416/
+    private static final String DB_URL = "jdbc:mysql://avnadmin:AVNS_BOwgsttXw1DG074BVy8@mysql-1e7edf9b-lhr-b3a4.e.aivencloud.com:25416/softwaretesting?ssl-mode=REQUIRED";
 
-softwaretesting ?ssl-mode=REQUIRED";
-    private static final String DB_USER = "root";
-    private static final String DB_PASSWORD = "12345678";
-    System.out.println("Test pipeline");
 
     public LoginApp() {
         setTitle("Login Screen");
