@@ -31,14 +31,6 @@ jobs:
         curl -fLo junit-platform-console-standalone-1.8.1.jar https://repo1.maven.org/maven2/org/junit/platform/junit-platform-console-standalone/1.8.1/junit-platform-console-standalone-1.8.1.jar
         curl -fLo mysql-connector-java-8.0.33.jar https://repo1.maven.org/maven2/mysql/mysql-connector-java/8.0.33/mysql-connector-java-8.0.33.jar
 
-    # Step 4: Verify the MySQL Connector JAR
-    - name: Verify MySQL Connector JAR
-      run: |
-        if [ ! -s mysql-connector-java-8.0.33.jar ]; then
-          echo "MySQL Connector JAR is missing or corrupted"
-          exit 1
-        fi
-
     # Step 5: Compile Java files
     - name: Compile Java Files
       run: |
