@@ -55,7 +55,7 @@ public class LoginApp extends JFrame {
         }
     }
 
-    private String authenticateUser(String email,String password) {
+    String authenticateUser(String email,String password) {
         String userName = null;
         try (Connection conn = DriverManager.getConnection(DB_URL)) {
             String query = "SELECT name FROM User WHERE Email = ? AND Password = ?";
