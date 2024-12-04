@@ -20,17 +20,18 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
 
-    - name: Download JUnit and ConsoleLauncher Jars
+    - name: Download Dependencies
       run: |
         curl -O https://repo1.maven.org/maven2/org/junit/jupiter/junit-jupiter-api/5.8.1/junit-jupiter-api-5.8.1.jar
         curl -O https://repo1.maven.org/maven2/org/junit/jupiter/junit-jupiter-engine/5.8.1/junit-jupiter-engine-5.8.1.jar
         curl -O https://repo1.maven.org/maven2/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar
         curl -O https://repo1.maven.org/maven2/org/junit/platform/junit-platform-console-standalone/1.8.1/junit-platform-console-standalone-1.8.1.jar
+        curl -O https://repo1.maven.org/maven2/mysql/mysql-connector-java/8.0.33/mysql-connector-java-8.0.33.jar
 
     - name: Compile Java Files
       run: |
-        javac -d . -cp ".;junit-jupiter-api-5.8.1.jar;junit-jupiter-engine-5.8.1.jar;apiguardian-api-1.1.2.jar" "Assignment 2/src/LoginApp.java" "Assignment 2/src/LoginAppTest.java"
+        javac -d . -cp ".;junit-jupiter-api-5.8.1.jar;junit-jupiter-engine-5.8.1.jar;apiguardian-api-1.1.2.jar;mysql-connector-java-8.0.33.jar" "Assignment 2/src/LoginApp.java" "Assignment 2/src/LoginAppTest.java"
 
     - name: Run Tests
       run: |
-        java -cp ".;junit-platform-console-standalone-1.8.1.jar" org.junit.platform.console.ConsoleLauncher --class-path . --select-class LoginAppTest
+        java -cp ".;junit-platform-console-standalone-1.8.1.jar;mysql-connector-java-8.0.33.jar" org.junit.platform.console.ConsoleLauncher --class-path . --select-class LoginAppTest
